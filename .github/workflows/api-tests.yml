@@ -40,3 +40,4 @@ jobs:
     - name: Upload results to S3
       run: |
         aws s3 cp results/results.xml s3://cloud-api-automation-tests-bucket/results.xml
+        aws s3 cp results/results.txt s3://cloud-api-automation-tests-bucket/results.txt
