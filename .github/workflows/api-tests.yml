@@ -30,3 +30,13 @@ jobs:
       with:
         name: test-results
         path: results/results.xml
+    - name: Configure AWS
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: eu-west-2
+
+    - name: Upload results to S3
+      run: |
+        aws s3 cp results/results.xml s3://cloud-api-automation-tests-bucket/results.xml
